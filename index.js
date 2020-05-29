@@ -131,7 +131,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 function variableInterestRate(P, I, N) {
-  for (let i = 0.02; i <= 0.06; i = i + 0.005) {
+  for (let i = 0; i < 9; i++) {
     let name = "Jonathan";
     const periods = N * 12;
     const monthlyInterestRate = I / 12;
