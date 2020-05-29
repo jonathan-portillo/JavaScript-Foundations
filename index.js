@@ -61,7 +61,7 @@ function mortgageCalculator() {
   const numerator = monthlyInterestRate * numExp;
   const denominator = numExp - 1;
   let monthlyRate = principal * (numerator / denominator);
-  return name + ", your monthly rate is " + monthlyRate;
+  return name + ", your monthly rate is " + monthlyRate.toFixed(2);
 }
 
 // console.log(mortgageCalculator());
@@ -82,7 +82,7 @@ function mortgageCalculator(P, I, N) {
   const numerator = monthlyInterestRate * numExp;
   const denominator = numExp - 1;
   let monthlyRate = P * (numerator / denominator);
-  return name + ", your monthly rate is " + monthlyRate;
+  return name + ", your monthly rate is " + monthlyRate.toFixed(2);
 }
 
 console.log(mortgageCalculator(200000, 0.05, 30));
@@ -107,7 +107,7 @@ function mortgageCalculator(P, I, N, creditScore) {
   const numerator = monthlyInterestRate * numExp;
   const denominator = numExp - 1;
   const monthlyRate = P * (numerator / denominator);
-  return name + ", your monthly rate is " + monthlyRate;
+  return name + ", your monthly rate is " + monthlyRate.toFixed(2);
 }
 
 console.log(mortgageCalculator(200000, 0.05, 30, 500));
@@ -129,6 +129,27 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+
+function variableInterestRate(P, I, N) {
+  for (let i = 0.02; i <= 0.06; i = i + 0.005) {
+    let name = "Jonathan";
+    const periods = N * 12;
+    const monthlyInterestRate = I / 12;
+    const sumNumerator = 1 + monthlyInterestRate;
+    const numExp = Math.pow(sumNumerator, periods);
+    const numerator = monthlyInterestRate * numExp;
+    const denominator = numExp - 1;
+    const monthlyRate = P * (numerator / denominator);
+    return (
+      name +
+      ", with an interest rate of " +
+      I +
+      ", your monthly rate is $" +
+      monthlyRate.toFixed(2)
+    );
+  }
+}
+console.log(variableInterestRate(200000, 0.04, 30));
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
